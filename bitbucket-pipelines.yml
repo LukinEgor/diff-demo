@@ -11,6 +11,8 @@ pipelines:
       - step:
           name: Test
           script:
+            - which bundler
+            - bundler -v
             - gem uninstall bundler
             - gem install bundler -v '2.0.1'
             - bundle install
