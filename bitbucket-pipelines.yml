@@ -14,7 +14,7 @@ pipelines:
             - which bundler
             - bundler -v
             - rm -rf /usr/local/bin/bundler
-            - gem install bundler -v '2.0.1'
+            - gem install --no-user-install bundler -v '2.0.1'
             - ls /usr/local/lib/ruby/gems/2.3.0/gems
             - bundle install
             - bundle exec rspec
