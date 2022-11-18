@@ -1,0 +1,11 @@
+image: ruby:2.3.3
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Test
+          script:
+            - gem install --no-user-install bundler -v '2.0.1'
+            - bundler install
+            - COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
