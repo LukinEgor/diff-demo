@@ -14,7 +14,7 @@ pipelines:
             - which bundler
             - bundler -v
             - ls /usr/local/lib/ruby/gems/2.3.0/gems
-            - gem uninstall bundler
+            - gem uninstall bundler -v 1.14.6
             - gem install --no-user-install bundler -v '2.0.1'
             - bundle install
             - ls /usr/local/lib/ruby/gems/2.3.0
