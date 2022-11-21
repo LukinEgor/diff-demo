@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/LukinEgor/coveralls-ruby
-  revision: 9c6ca4c2052288b90fab4d93f4e592b19bafb868
+  revision: 08f86796a312e95ccfaead081bd1ce9fa39e8e66
   branch: fix/content-type-request
   specs:
     coveralls (0.8.23)
