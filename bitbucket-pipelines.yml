@@ -1,7 +1,8 @@
 image: ruby:2.3.3
 
 pipelines:
-  pull-requests::
+  pull-requests:
+   '**':
     - parallel:
       - step:
           name: Test
