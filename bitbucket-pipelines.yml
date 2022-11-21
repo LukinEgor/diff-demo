@@ -5,7 +5,7 @@ pipelines:
    '**':
     - parallel:
       - step:
-          name: Test
+          name: TestJob
           script:
             - gem install --no-user-install bundler -v '2.0.1'
             - bundler install
