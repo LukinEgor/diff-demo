@@ -8,4 +8,4 @@ pipelines:
           script:
             - gem install --no-user-install bundler -v '2.0.1'
             - bundler install
-            - COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
+            - COVERALLS_DEBUG=true BITBUCKET_CI=true COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
