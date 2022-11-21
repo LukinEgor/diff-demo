@@ -1,2 +1,2 @@
-Coveralls Diff Demo
+Coveralls Diff Demo (bitbucket integration)
 ===
