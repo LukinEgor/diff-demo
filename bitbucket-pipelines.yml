@@ -1,12 +1,22 @@
 image: ruby:2.3.3
 
 pipelines:
+  pull-requests:
+   '**':
+    - parallel:
+      - step:
+          name: Test
+          script:
+            - gem install --no-user-install bundler -v '2.0.1'
+            - bundler install
+            - COVERALLS_DEBUG=true CI_NAME=bitbucket CI_BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER CI_BRANCH=$BITBUCKET_BRANCH CI_PULL_REQUEST=$BITBUCKET_PR_ID COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
+            - printenv
   default:
     - parallel:
-        - step:
-            name: Test
-            script:
-              - gem install --no-user-install bundler -v '2.0.1'
-              - bundler install
-              - COVERALLS_DEBUG=true CI_NAME=bitbucket CI_BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER CI_BRANCH=$BITBUCKET_BRANCH CI_PULL_REQUEST=$BITBUCKET_PR_ID COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
-              - printenv
+      - step:
+          name: Test
+          script:
+            - gem install --no-user-install bundler -v '2.0.1'
+            - bundler install
+            - COVERALLS_DEBUG=true CI_NAME=bitbucket CI_BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER CI_BRANCH=$BITBUCKET_BRANCH COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
+            - printenv
