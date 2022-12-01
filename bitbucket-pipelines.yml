@@ -9,6 +9,14 @@ pipelines:
           script:
             - gem install --no-user-install bundler -v '2.0.1'
             - bundler install
-            - COVERALLS_DEBUG=true BITBUCKET_CI=true COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
+            - COVERALLS_DEBUG=true CI_NAME=bitbucket CI_BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER CI_BRANCH=$BITBUCKET_BRANCH CI_PULL_REQUEST=$BITBUCKET_PR_ID COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
             - printenv
-            - curl https://api.bitbucket.org/2.0/repositories/LukinEgor/demo-diff/commit/cff89e2084fb1fbd4da8eb50679e3d22b650015b/pullrequests
+  default:
+    - parallel:
+      - step:
+          name: Test
+          script:
+            - gem install --no-user-install bundler -v '2.0.1'
+            - bundler install
+            - COVERALLS_DEBUG=true CI_NAME=bitbucket CI_BUILD_NUMBER=$BITBUCKET_BUILD_NUMBER CI_BRANCH=$BITBUCKET_BRANCH COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundler exec rspec
+            - printenv
