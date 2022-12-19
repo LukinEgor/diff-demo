@@ -17,6 +17,8 @@ jobs:
       with:
         ruby-version: 2.3.3
         # bundler-cache: true
+    - name: Install gems
+      run: bundle install
     - name: Run tests
       run: bundle exec rspec
     - name: Run ls
