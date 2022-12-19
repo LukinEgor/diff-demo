@@ -25,5 +25,5 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./coverage/lcov/diff-demo.lcov
+        # path-to-lcov: ./coverage/lcov/diff-demo.lcov
         env: COVERALLS_NODE_DEBUG=1
