@@ -1,0 +1,31 @@
+name: Test Coveralls
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build_and_test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.5.0
+        # bundler-cache: true
+    - name: Install gems
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Run ls
+      run: ls && ls ./coverage && ls ./coverage/lcov
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage/lcov/diff-demo.lcov
+        env: COVERALLS_NODE_DEBUG=1
