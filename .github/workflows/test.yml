@@ -15,7 +15,7 @@ jobs:
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.3
+        ruby-version: 2.3.3
         bundler-cache: true
     - name: Run tests
       run: bundle exec rspec
