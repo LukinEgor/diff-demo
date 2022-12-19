@@ -21,8 +21,6 @@ jobs:
       run: bundle install
     - name: Run tests
       run: bundle exec rspec
-    - name: Run ls
-      run: ls && ls ./coverage && ./coverage/lcov/
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
