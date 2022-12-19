@@ -27,5 +27,5 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./coverage/.last_run.json
+        path-to-lcov: ./coverage/lcov/app.lcov
         env: COVERALLS_NODE_DEBUG=1
