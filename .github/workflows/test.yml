@@ -21,9 +21,11 @@ jobs:
       run: bundle install
     - name: Run tests
       run: bundle exec rspec
+    - name: Run ls
+      run: ls && ls ./coverage
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        # path-to-lcov: ./coverage/lcov/diff-demo.lcov
+        path-to-lcov: ./coverage/.last_run.json
         env: COVERALLS_NODE_DEBUG=1
